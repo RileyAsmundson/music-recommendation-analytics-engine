@@ -20,3 +20,10 @@ env/
 .env
 
 data/*.csv
+
+# Ignore massive data files and databases
+data/raw/*.csv
+data/processed/*.db
+
+# Ignore cache files
+**/.cache
