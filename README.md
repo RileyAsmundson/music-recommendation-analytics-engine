@@ -34,17 +34,17 @@ By using the union as the denominator, the model penalizes hyper-popular tracks 
 
 ---
 
-## The Dual-Engine Refinement Logic
+## Recommendation Pathways
 
 To help users discover new artists while still allowing them to explore a specific song type, the system is split into two distinct execution pathways.
 
-### Engine A: Cross-Artist Discovery
-* **Objective:** Surface new, diverse artists matching the target vibe without getting trapped in a single artist's discography.
-* **Logic:** The engine explicitly filters out and **excludes the seed artist** from the final recommendation query. This forces the Jaccard calculation to find adjacent sonic subcultures across the wider dataset.
+### 1. Cross-Artist Discovery
+* **Objective:** Surface new, diverse artists matching the target song without getting stuck in a single artist's discography.
+* **Logic:** The query explicitly filters out the seed artist (WHERE artist != ?). This forces the Jaccard calculation to look outside the artist's catalog and expose adjacent sonic subcultures across the wider dataset.
 
-### Engine B: Artist-Specific Deep Dives
-* **Objective:** Uncover pairings within a specific artist's catalog or immediate circle.
-* **Logic:** The engine restricts or weights the relational queries toward the seed artist's ecosystem, allowing users to explore a singular discography.
+### 2. Artist-Specific Recommendations
+* **Objective:** Uncover pairings within a specific artist's discography.
+* **Logic:** The query isolates the dataset strictly to the seed artist (WHERE artist = ?), allowing users to explore within a single discography.
 
 ---
 
