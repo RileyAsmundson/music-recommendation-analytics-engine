@@ -26,8 +26,6 @@ data/raw/*.csv
 data/processed/*.db
 
 # Ignore cache files
-**/.cache*.db-wal
-*.db-shm
-**/*.db-wal
-**/*.db-shm
+.cache
 .cache/
+**/.cache
