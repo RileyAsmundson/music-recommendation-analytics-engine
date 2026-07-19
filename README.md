@@ -48,7 +48,20 @@ To help users discover new artists while still allowing them to explore a specif
 
 ---
 
+## Preparing for Power BI: Backend Materialization
+
+Computing Jaccard similarity matrices on-the-fly across millions of track combinations would cause severe latency inside a live dashboard. To ensure quick responses inside Power BI, the backend was completely refactored into a pre-computed, optimized analytical reporting layer (`bi_track_similarities`).
+
+* **Strategic Data Selection:** Applied a "Meaningful Track" threshold, isolating tracks appearing in >= 5 playlists.
+* **Batch Processing:** Split a massive database query into small chunks of 500 tracks to prevent the system from running out of memory.
+* **Database Tuning:** Optimized SQLite settings for faster data writing and automatically deleted temporary tables to save disk space.
+* **Fast Visual Filtering:** Built targeted database indexes to drop query times, ensuring the Power BI dashboard responds instantly.
+
+---
+
 ## Future Roadmap
 
-* **Power BI Visualization Dashboard:** Developing a visual layer to map out track clusters, network graphs of shared playlist co-occurrences, and interactive similarity score distributions.
-
+* **Power BI Integration:** Connect the optimized SQLite data warehouse using an ODBC driver to establish a high-performance relational Star Schema.
+* **Spotify-Style UI/UX Layout:** Construct an immersive dark-mode analytics canvas featuring an interactive "Seed Track" search engine and a real-time recommendation matrix.
+* **Dynamic Analytics Visuals:** Implement supporting KPI cards and distributions to display genre overlaps, contextual popularity scores, and playlist volume tracking.
+* **Performance Validation:** Run end-to-end user-interaction testing to guarantee instant visual rendering without load-wheel lag.
