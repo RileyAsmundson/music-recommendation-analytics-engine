@@ -9,8 +9,7 @@ Instead of guessing what a song feels like based on clinical audio stats, this p
 
 The engine is built on a high-performance relational SQLite data warehouse containing **12.8M+ transaction rows** across **231K+ playlists**, **2.7M+ unique tracks**, and **15K+ users**. To eliminate data fragmentation and ensure sub-second query execution across a dataset of this scale, the pipeline utilizes a dedicated canonicalization framework and targeted database indexing.
 
-![Data Warehouse ERD](docs/data_warehouse_erd.png)
-
+![Data Warehouse ERD](docs/MR%20Data%20Warehouse.drawio.png)
 
 ### 1. Data Normalization & Canonicalization
 Raw user-curated playlist data often suffers from text discrepancies (e.g., inconsistent capitalization, varied spacing, and duplicate string entries for identical tracks). 
