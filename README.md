@@ -3,7 +3,7 @@
 ## Project Overview 
 A music data analytics engine engineered to discover more human recommendations, inspired by how I like to find new music on spotify.
 
-Instead of guessing what a song feels like based on clinical audio stats, this project taps into millions of real playlists built by actual people. By evaluating how songs are naturally grouped together globally—and using statistical leveling to filter out the noise of massive pop hits, the engine uncovers genuine song connections that capture a real mood rather than commercial popularity.
+Instead of guessing what a song feels like based on clinical audio stats, this project taps into millions of real playlists built by actual people. By evaluating how songs are naturally grouped together globally, and using statistical leveling to filter out the noise of massive pop hits, the engine uncovers genuine song connections that capture a real mood rather than commercial popularity.
 
 ## System Architecture & Data Pipeline
 
