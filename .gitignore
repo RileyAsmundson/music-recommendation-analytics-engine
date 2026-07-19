@@ -29,3 +29,9 @@ data/processed/*.db
 .cache
 .cache/
 **/.cache
+
+# Ignore SQLite temporary files
+*.db-wal
+*.db-shm
+**/*.db-wal
+**/*.db-shm
