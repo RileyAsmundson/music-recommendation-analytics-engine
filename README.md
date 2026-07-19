@@ -7,29 +7,10 @@ Instead of guessing what a song feels like based on clinical audio stats, this p
 
 ## System Architecture & Data Pipeline
 
-The engine is built on a relational database infrastructure (`vibe_warehouse.db`) utilizing the `#nowplaying` dataset. To ensure high-performance queries and eliminate data fragmentation, the pipeline processes data through a canonicalization and ID pooling framework.
+The engine is built on a high-performance relational SQLite data warehouse containing **12.8M+ transaction rows** across **231K+ playlists**, **2.7M+ unique tracks**, and **15K+ users**. To eliminate data fragmentation and ensure sub-second query execution across a dataset of this scale, the pipeline utilizes a dedicated canonicalization framework and targeted database indexing.
 
-              ┌──────────────────────────────┐
-              │   Raw #nowplaying Dataset    │
-              └──────────────┬───────────────┘
-                             │
-                             ▼
-              ┌──────────────────────────────┐
-              │ Canonicalization Pipeline    │ (Capitalization fix &
-              │  & ID Pooling Framework      │  string normalization)
-              └──────────────┬───────────────┘
-                             │
-                             ▼
-              ┌──────────────────────────────┐
-              │      vibe_warehouse.db       │ (SQLite / Relational
-              │                              │  Storage Engine)
-              └──────┬─────────────────┬─────┘
-                     │                 │
-                     ▼                 ▼
-      ┌───────────────────────┐   ┌───────────────────────┐
-      │ Discovery Engine      │   │ Deep Dive Engine      │
-      │ (Excludes Seed Artist)│   │ (Artist-Specific)     │
-      └───────────────────────┘   └───────────────────────┘
+![Data Warehouse ERD](docs/data_warehouse_erd.png)
+
 
 ### 1. Data Normalization & Canonicalization
 Raw user-curated playlist data often suffers from text discrepancies (e.g., inconsistent capitalization, varied spacing, and duplicate string entries for identical tracks). 
@@ -71,4 +52,4 @@ To help users discover new artists while still allowing them to explore a specif
 ## Future Roadmap
 
 * **Power BI Visualization Dashboard:** Developing a visual layer to map out track clusters, network graphs of shared playlist co-occurrences, and interactive similarity score distributions.
-* **Real-time Query Indexing:** Optimizing the SQLite backend with customized indices to scale similarity calculations across larger user-curated tables.
+
