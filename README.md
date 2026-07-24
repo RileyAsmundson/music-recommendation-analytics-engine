@@ -1,13 +1,14 @@
 # Music Recommendation Analytics Engine
 
 ## Project Overview 
-A music data analytics engine engineered to discover more human recommendations, inspired by how I like to find new music on spotify.
+A data-driven recommendation system designed to improve music discovery by leveraging human-curated playlist behavior instead of traditional audio-feature-based models. By analyzing how millions of users group songs into playlists, the system surfaces context-aware recommendations that better reflect listener intent, ultimately increasing engagement and session time on streaming platforms.
 
-Instead of guessing what a song feels like based on clinical audio stats, this project taps into millions of real playlists built by actual people. By evaluating how songs are naturally grouped together globally, and using statistical leveling to filter out the noise of massive pop hits, the engine uncovers genuine song connections that capture a real mood rather than commercial popularity.
+* **Business Problem:** 
+Music streaming platforms struggle to deliver contextually relevant recommendations that capture user intent, often resulting in repetitive or irrelevant suggestions. This leads to reduced user engagement, shorter listening sessions, and increased reliance on manual search for music discovery.
 
 ## System Architecture & Data Pipeline
 
-The engine is built on a high-performance relational SQLite data warehouse containing **12.8M+ transaction rows** across **231K+ playlists**, **2.7M+ unique tracks**, and **15K+ users**. To eliminate data fragmentation and ensure sub-second query execution across a dataset of this scale, the pipeline utilizes a dedicated canonicalization framework and targeted database indexing.
+The system is built on a high-performance SQLite data warehouse containing **12.8M+ records** across **231K+ playlists**, **2.7M+ tracks**, and **15K+ users**, with data modeling and indexing designed to support efficient analytical queries and scalable similarity computations.
 
 ![Data Warehouse ERD](docs/MR%20Data%20Warehouse.drawio.png)
 
@@ -34,9 +35,18 @@ By using the union as the denominator, the model penalizes hyper-popular tracks 
 
 ---
 
+## Key Insights
+This analysis reveals several key patterns in how users organize and discover music:
+  - Human-curated playlists encode implicit context (mood, activity, niche taste) that is not captured by traditional audio features
+  - Raw co-occurrence heavily favors popular tracks, requiring normalization (Jaccard) to surface more meaningful relationships
+  - Filtering for “meaningful tracks” (≥5 playlists) significantly improves recommendation quality by removing noise from sparse data
+  - Cross-artist filtering promotes diverse music discovery by surfacing relevant songs beyond a single artist’s catalog
+
+---
+
 ## Recommendation Pathways
 
-To help users discover new artists while still allowing them to explore a specific song type, the system is split into two distinct execution pathways.
+To support different music discovery behaviors, the system is split into two distinct recommendation pathways:
 
 ### 1. Cross-Artist Discovery
 * **Objective:** Surface new, diverse artists matching the target song without getting stuck in a single artist's discography.
@@ -59,9 +69,8 @@ Computing Jaccard similarity matrices on-the-fly across millions of track combin
 
 ---
 
-## Future Roadmap
+## Power BI Implementation
 
-* **Power BI Integration:** Connect the optimized SQLite data warehouse using an ODBC driver to establish a high-performance relational Star Schema.
-* **Spotify-Style UI/UX Layout:** Construct an immersive dark-mode analytics canvas featuring an interactive "Seed Track" search engine and a real-time recommendation matrix.
-* **Dynamic Analytics Visuals:** Implement supporting KPI cards and distributions to display genre overlaps, contextual popularity scores, and playlist volume tracking.
-* **Performance Validation:** Run end-to-end user-interaction testing to guarantee instant visual rendering without load-wheel lag.
+---
+
+## Business Impact
