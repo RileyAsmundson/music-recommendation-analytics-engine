@@ -1,0 +1,50 @@
+table tracks
+	lineageTag: 44981b1b-97c2-4386-b9fc-e0099cac8b61
+
+	column track_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ab98625e-a940-430a-b1ef-b6bf29f3d30f
+		summarizeBy: none
+		sourceColumn: track_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column artist_name
+		dataType: string
+		lineageTag: 60b70a35-4414-4139-87b1-88af61e2c8e6
+		summarizeBy: none
+		sourceColumn: artist_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column track_name
+		dataType: string
+		lineageTag: c45681ab-01d7-44b0-9eab-5e006d686e13
+		summarizeBy: none
+		sourceColumn: track_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column search
+		dataType: string
+		lineageTag: 09698e6d-792f-457d-83b2-954b49ad9f22
+		summarizeBy: none
+		sourceColumn: search
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tracks = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.Query("Driver={Devart ODBC Driver for SQLite};Database=Y:\music-recommendation-analytics-engine\data\processed\vibe_warehouse.db;", "SELECT * FROM bi_tracks"),
+				    #"Inserted Merged Column" = Table.AddColumn(Source, "search_label", each Text.Combine({[artist_name], [track_name]}, " - "), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Merged Column",{{"search_label", "search"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,42 @@
+table matched_tracks
+	lineageTag: e4519c06-752d-43c9-b5bb-9f0d14823ab2
+
+	column track_id
+		formatString: 0
+		lineageTag: 1852d51b-e8a2-4e96-9d3f-09f0c584dd73
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: tracks[track_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column artist_name
+		lineageTag: 2259150b-ebfe-40e5-8fa7-d72eb11b3b4b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: tracks[artist_name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column track_name
+		lineageTag: c26e43ee-ee21-47bc-92a0-6af8f51a6264
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: tracks[track_name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column search
+		lineageTag: fa2ba4de-1c17-4865-862a-54001980dabf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: tracks[search]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition matched_tracks = calculated
+		mode: import
+		source = tracks
+
+	annotation PBI_Id = 0796c3c5fade449a896dfc509cf73a76
+

@@ -1,0 +1,8 @@
+relationship 4a2e341f-ab47-f5a1-48b2-0dd5246ccb79
+	fromColumn: bi_track_similarities.seed_track_id
+	toColumn: tracks.track_id
+
+relationship 3acb687e-c7cc-b8dc-bed1-5f598f1e2998
+	fromColumn: bi_track_similarities.match_track_id
+	toColumn: matched_tracks.track_id
+

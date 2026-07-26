@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["tracks","bi_track_similarities"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table bi_track_similarities
+ref table tracks
+ref table matched_tracks
+
+ref cultureInfo en-US
+

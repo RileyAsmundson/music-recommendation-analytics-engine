@@ -1,0 +1,50 @@
+table bi_track_similarities
+	lineageTag: bb731253-192a-4a6b-b5f6-edc0c6d2a20c
+
+	column seed_track_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 324e70c0-c7d1-4d7d-83ae-e58e883f328e
+		summarizeBy: none
+		sourceColumn: seed_track_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column match_track_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5822de8e-8644-4835-8d6f-deec72b33e22
+		summarizeBy: none
+		sourceColumn: match_track_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column jaccard_score
+		dataType: double
+		formatString: 0%;-0%;0%
+		lineageTag: d5bbca0c-0fe5-4130-841c-93735f731308
+		summarizeBy: sum
+		sourceColumn: jaccard_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column rec_type
+		dataType: string
+		lineageTag: 33d268f0-f323-4f63-b5b8-70ca9bedaf05
+		summarizeBy: none
+		sourceColumn: rec_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bi_track_similarities = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.Query("Driver={Devart ODBC Driver for SQLite};Database=Y:\music-recommendation-analytics-engine\data\processed\vibe_warehouse.db;", "SELECT * FROM bi_track_similarities_hybrid")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
