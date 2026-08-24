@@ -12,7 +12,7 @@ The system is built on a high-performance SQLite data warehouse containing **12.
 
 ![Data Warehouse ERD](docs/MR%20Data%20Warehouse.drawio.png)
 
-### 1. Data Normalization & Canonicalization
+### Data Normalization & Canonicalization
 Raw user-curated playlist data often suffers from text discrepancies (e.g., inconsistent capitalization, varied spacing, and duplicate string entries for identical tracks). 
 * **ID Pooling:** Resolves data fragmentation by assigning unique identifiers to distinct tracks and artists.
 * **Text Canonicalization:** Standardizes metadata fields before database insertion, guaranteeing that user-generated variations pool into the same relational entities.
