@@ -6,6 +6,9 @@ A data-driven recommendation system designed to improve music discovery by using
 * **Business Problem:** 
 Music streaming platforms may struggle to deliver contextually relevant recommendations that capture user intent, often resulting in repetitive or irrelevant suggestions. This leads to reduced user engagement, shorter listening sessions, and increased reliance on manual search for music discovery.
 
+## Tech Stack
+Python | SQLite | SQL | Power BI | Git/GitHub
+
 ## System Architecture & Data Pipeline
 
 The system is built on a high-performance SQLite data warehouse containing **12.8M+ records** across **231K+ playlists**, **2.7M+ tracks**, and **15K+ users**, with data modeling and indexing designed to support efficient analytical queries and scalable similarity scores.
