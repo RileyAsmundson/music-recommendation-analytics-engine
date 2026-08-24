@@ -35,15 +35,6 @@ By using the union as the denominator, the model penalizes the extremely popular
 
 ---
 
-## Key Insights
-This analysis reveals several key patterns in how users organize and discover music:
-  - Human-curated playlists encode implicit context (mood, activity, niche taste) that is not captured by traditional audio features
-  - Raw co-occurrence heavily favors popular tracks, requiring normalization to surface more meaningful relationships
-  - Filtering for “meaningful tracks” (≥5 playlists) significantly improves recommendation quality by removing noise from sparse data
-  - Cross-artist filtering promotes diverse music discovery by surfacing relevant songs beyond a single artist’s catalog
-
----
-
 ## Recommendation Pathways
 
 To support different music discovery behaviors, the system is split into two distinct recommendation pathways:
