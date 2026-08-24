@@ -1,13 +1,38 @@
 # Music Recommendation Analytics Engine
+A data-driven music recommendation system that uses human-curated playlist behavior to uncover meaningful relationships between songs and improve music discovery.
 
-## Project Overview 
-A data-driven recommendation system designed to improve music discovery by using human-curated playlist behavior instead of traditional audio-feature-based models. By analyzing how millions of users group songs into playlists, the system finds recommendations that better reflect listener intent, ultimately increasing engagement and session time on streaming platforms.
+Built on **12.8M+ playlist records** across **231K+ playlists, 2.7M+ tracks, and 15K+ users**, the system uses playlist co-occurrence and **Jaccard similarity** to generate recommendations while reducing the popularity bias common in raw co-occurrence models.
 
-* **Business Problem:** 
-Music streaming platforms may struggle to deliver contextually relevant recommendations that capture user intent, often resulting in repetitive or irrelevant suggestions. This leads to reduced user engagement, shorter listening sessions, and increased reliance on manual search for music discovery.
+The project combines a Python-based data pipeline, a normalized SQLite data warehouse, a precomputed recommendation engine, and an interactive Power BI dashboard designed for fast, user-driven music exploration.
+
+## Demo
+
+> **Interactive Power BI Recommendation Dashboard**
+> Explore both cross-artist discovery and artist-specific recommendations generated from precomputed playlist similarity scores.
+
+[Insert demo GIF / video preview here]
+
+## Business Problem
+
+Music streaming platforms need to surface recommendations that reflect listener intent, not simply overall track popularity.
+
+Traditional co-occurrence approaches can over-recommend mainstream tracks because highly popular songs naturally appear across a large number of playlists. This project instead analyzes how users intentionally group songs within playlists and normalizes those relationships using Jaccard similarity.
+
+The goal is to surface more contextually relevant recommendations that can support:
+
+* Greater music discovery
+* More diverse recommendations
+* Reduced popularity bias
+* Increased opportunities for listener engagement
 
 ## Tech Stack
-Python | SQLite | SQL | Power BI | Git/GitHub
+
+**Languages & Data Processing:** Python | SQL
+**Database:** SQLite
+**Analytics & Visualization:** Power BI
+**Data Architecture:** ETL | Relational Data Modeling | Data Warehousing
+**Recommendation Modeling:** Playlist Co-occurrence | Jaccard Similarity
+**Development:** Git | GitHub
 
 ## System Architecture & Data Pipeline
 
